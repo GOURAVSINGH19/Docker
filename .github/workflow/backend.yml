@@ -24,7 +24,7 @@ jobs:
           context: .
           file: docker/Dockerfile.backend
           push: true
-          tags: 100xdevs/todo-backend:${{github.sha}} ## github.sha is version which generate on push commit
+          tags: docker_learn/todo-backend:${{github.sha}} ## github.sha is version which generate on push commit
           
       - name: Deploy to the VM
         run: |
