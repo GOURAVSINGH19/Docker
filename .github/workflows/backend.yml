@@ -1,24 +1,25 @@
-name: backend
-
+name: Deploy backend.yml to github
 on:
   push:
-    branches: [main]
-
-jobs:
+    branches: [ main ]
+jobs: 
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout the code
+        uses: actions/checkout@v2
 
       - name: Docker login
-        users: docker/login-action@v2
-        with: username:${{secrets.DOCKERHUB_USERNAME}}
-          password:${{secrets.DOCKERHUB_TOKEN}}
-
-      - name: Build and push
-        uses: docker/build-push-action@4
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      
+      - name: Build and push 
+        uses: docker/build-push-action@v4
         with:
           context: .
-          file: docker/Dockerfile.backend
+          file: ./docker/Dockerfile.backend
           push: true
-          tags: docker_learn/todo-backend:${{github.sha}} ## github.sha is version which generate on push commit
+          tags: docker_learn/todo-app-backend:${{ github.sha }}
+     
