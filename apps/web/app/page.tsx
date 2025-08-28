@@ -4,7 +4,7 @@ const page = async () => {
   const users = await prisma.user.findMany();
   return (
     <div>
-      {JSON.stringify(users)}
+      {JSON.stringify(users)}s
     </div>
   )
 }
