@@ -5,7 +5,7 @@ const page = async () => {
   return (
     <div>
       {JSON.stringify(users)}
-      hello hanni
+      hello 
     </div>
   )
 }
