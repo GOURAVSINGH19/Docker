@@ -1,10 +1,11 @@
 import React from 'react'
-import prisma from '@repo/db/client'
+// import { prismaClient } from '@repo/db/client'
 const page = async () => {
-  const users = await prisma.user.findMany();
+  // const users = await prismaClient.user.findMany();
   return (
     <div>
-      {JSON.stringify(users)}s
+      {/* {JSON.stringify(users)} */}
+      hello
     </div>
   )
 }

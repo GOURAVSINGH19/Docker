@@ -26,10 +26,10 @@
 #           build-args:
 #             - DATABASE_URL=${{ secrets.DATABASE_URL }}
 #           push: true
-#           tags: 100xdevs/todo-backend:${{github.sha}} ## github.sha is version which generate on push commit
+#           tags: todo-backend/todo-backend:${{github.sha}} ## github.sha is version which generate on push commit
 
 #       - name: Deploy to the VM
 #         run: |
 #           echo "${{ secrets.SSH_PRIVATE_KEY }}" &> ~/ssh_key
 #           chmod 700 /home/runner/ssh_key
-#           ssh -o StrictHostKeyChecking=no -i ~/ssh_key root@64.227.169.180 -t "docker stop user_backend && docker run --name user_backend -d -p 8080:8080 100xdevs/todo-app-backend:${{ github.sha }}"
+#           ssh -o StrictHostKeyChecking=no -i ~/ssh_key root@64.227.169.180 -t "docker stop user_backend && docker run --name user_backend -d -p 8080:8080 todo-backend/todo-app-backend:${{ github.sha }}"

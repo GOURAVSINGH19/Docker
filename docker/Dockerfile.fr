@@ -1,8 +1,9 @@
 FROM oven/bun:1
 
-WORKDIR /user/src/app
+WORKDIR /usr/src/app
 
 ARG DATABASE_URL
+
 COPY ./packages ./packages
 COPY ./bun.lock ./bun.lock
 

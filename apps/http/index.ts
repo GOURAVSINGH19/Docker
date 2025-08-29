@@ -1,5 +1,5 @@
 import express from "express";
-import prisma from "@repo/db/client"
+import { prismaClient } from "@repo/db/client";
 const app = express();
 const port = 3000;
 
@@ -7,8 +7,8 @@ app.use(express.json());
 
 app.get("/users", async (req, res) => {
   try {
-    const users = await prisma.user.findMany({
-        where: { username: { not: null } }
+    const users = await prismaClient.user.findMany({
+      where: { username: { not: "" } },
     });
     res.json(users);
   } catch (error) {
@@ -19,7 +19,7 @@ app.get("/users", async (req, res) => {
 app.post("/users", async (req, res) => {
   const { username, password } = req.body;
   try {
-    const user = await prisma.user.create({
+    const user = await prismaClient.user.create({
       data: { username, password },
     });
     res.status(201).json(user);
